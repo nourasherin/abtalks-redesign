@@ -1,10 +1,68 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Code2, Heart, Globe, MessageSquare } from "lucide-react";
+import { Code2, Heart, Globe, MessageSquare, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
 
 function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+      setEmail("");
+    }
+  };
+
   return (
-    <footer className="border-t border-slate-800/80 bg-slate-950 pt-12 pb-8">
+    <footer className="border-t border-slate-800/80 bg-slate-950 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* Newsletter Callout Banner inside Footer */}
+        <div className="mb-14 overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900/90 to-purple-950/40 p-6 sm:p-8 backdrop-blur-xl">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-7 space-y-2">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-400 uppercase tracking-wider">
+                <Mail className="h-3.5 w-3.5" /> Newsletter & Daily Briefs
+              </span>
+              <h3 className="text-xl font-bold text-white sm:text-2xl">
+                Get Weekly Full-Stack Micro-Project Teardowns
+              </h3>
+              <p className="text-sm text-slate-300">
+                Join 12,000+ developers receiving curated AI coding tips, architecture templates, and career advice.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5">
+              {subscribed ? (
+                <div className="flex items-center gap-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 p-3.5 text-sm font-semibold text-emerald-300">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                  <span>You're subscribed! Check your inbox for daily briefs.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address..."
+                    className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="flex shrink-0 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-purple-600/30 transition-transform active:scale-95"
+                  >
+                    <span>Subscribe</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Main Footer Sitemap Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4 lg:grid-cols-5">
           
           {/* Brand Info Column */}
@@ -19,11 +77,18 @@ function Footer() {
                 AB<span className="gradient-text">Talks</span>
               </span>
             </Link>
+
             <p className="max-w-sm text-sm text-slate-400 leading-relaxed">
               Empowering engineers to master full-stack development through daily 60-day project challenges and AI guidance.
             </p>
 
-            {/* Social Links with inline SVGs */}
+            {/* System Status Pill */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/80 px-3 py-1 text-xs text-slate-300 font-medium">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Systems Operational</span>
+            </div>
+
+            {/* Social Links */}
             <div className="flex items-center gap-3 pt-2">
               <a href="https://github.com" target="_blank" rel="noreferrer" className="rounded-lg border border-slate-800 bg-slate-900 p-2 text-slate-400 hover:border-slate-700 hover:text-white transition-colors" aria-label="GitHub">
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">

@@ -1,8 +1,10 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import StatsSection from "../components/StatsSection";
+import HowItWorksSection from "../components/HowItWorksSection";
 import AIMotivationCard from "../components/AIMotivationCard";
 import FeaturesSection from "../components/FeaturesSection";
+import TestimonialsSection from "../components/TestimonialsSection";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
 
@@ -17,14 +19,20 @@ function LandingPage() {
         {/* Hero Section */}
         <Hero />
 
-        {/* Realistic Stats Section */}
+        {/* Realistic Stats & Live Activity Ticker */}
         <StatsSection />
 
-        {/* AI Adaptive Motivation Card */}
+        {/* How It Works 4-Step Methodology */}
+        <HowItWorksSection />
+
+        {/* AI Adaptive Motivation & Streak Protection Card */}
         <AIMotivationCard />
 
-        {/* Key Features Section */}
+        {/* Key Features Section with Category Tabs */}
         <FeaturesSection />
+
+        {/* Student Testimonials Section */}
+        <TestimonialsSection />
 
         {/* Call to Action Banner */}
         <CTASection />

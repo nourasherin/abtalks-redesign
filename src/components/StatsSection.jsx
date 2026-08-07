@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
-import { Calendar, Users, GitBranch, Flame } from "lucide-react";
+import { Calendar, Users, GitBranch, Flame, Sparkles, Activity } from "lucide-react";
 
 function StatsSection() {
+  const recentActivities = [
+    { name: "Rahul S.", day: "Day 18", project: "AI Chatbot API", time: "2 mins ago" },
+    { name: "Sneha K.", day: "Day 34", project: "Redis Cache Clone", time: "5 mins ago" },
+    { name: "Vikram P.", day: "Day 12", project: "Full-Stack Auth", time: "8 mins ago" },
+    { name: "Ananya M.", day: "Day 60", project: "Capstone Micro-SaaS", time: "12 mins ago" },
+  ];
+
   const stats = [
     {
       id: "duration",
@@ -42,7 +49,32 @@ function StatsSection() {
   ];
 
   return (
-    <section className="relative py-12 border-y border-slate-800/80 bg-slate-950/60 backdrop-blur-md">
+    <section className="relative py-12 border-y border-slate-800/80 bg-slate-950/60 backdrop-blur-md overflow-hidden">
+      
+      {/* Top Live Ticker Bar */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="flex items-center justify-between overflow-x-auto rounded-2xl border border-slate-800/80 bg-slate-900/80 px-4 py-2.5 backdrop-blur-xl text-xs scrollbar-none">
+          <div className="flex items-center gap-2 shrink-0 pr-4 border-r border-slate-800">
+            <Activity className="h-4 w-4 text-emerald-400 animate-pulse" />
+            <span className="font-bold text-white uppercase tracking-wider text-[11px]">Live Activity:</span>
+          </div>
+
+          <div className="flex items-center gap-6 shrink-0 pl-4 text-slate-300">
+            {recentActivities.map((act, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="font-semibold text-purple-300">{act.name}</span>
+                <span className="rounded bg-purple-500/20 px-1.5 py-0.5 text-[10px] font-bold text-purple-300">
+                  {act.day}
+                </span>
+                <span className="text-slate-400">completed {act.project}</span>
+                <span className="text-slate-500 text-[10px]">({act.time})</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Stats Grid */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
           {stats.map((stat, index) => {
