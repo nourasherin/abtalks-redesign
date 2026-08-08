@@ -5,6 +5,10 @@ import { ShieldAlert, Zap, ArrowRight, CheckCircle2, Flame, RotateCcw } from "lu
 function StreakRecoveryCard({ recoveryData }) {
   const [isSimulatedMissed, setIsSimulatedMissed] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="relative overflow-hidden rounded-3xl border border-amber-500/30 bg-slate-900/90 p-5 sm:p-6 backdrop-blur-xl shadow-xl">
@@ -12,7 +16,6 @@ function StreakRecoveryCard({ recoveryData }) {
       <div className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-amber-500/10 blur-2xl" />
 
       <div className="relative z-10 space-y-4">
-        
         {/* Top Header & Simulation Toggle */}
         <div className="flex items-center justify-between border-b border-slate-800/80 pb-3.5">
           <div className="flex items-center gap-2">
@@ -59,18 +62,17 @@ function StreakRecoveryCard({ recoveryData }) {
 
               <div className="pt-2 flex items-center justify-between">
                 <span className="text-[11px] font-semibold text-slate-400">Est. Time: {recoveryData.bonusChallenge.estimatedTime}</span>
-                
                 {isCompleted ? (
                   <span role="alert" className="flex items-center gap-1 text-xs font-bold text-emerald-400 bg-emerald-500/20 px-3 py-1.5 rounded-xl border border-emerald-500/40">
                     <CheckCircle2 className="h-4 w-4" /> Streak Restored!
                   </span>
                 ) : (
                   <button
-                    onClick={() => setIsCompleted(true)}
+                    onClick={handleOpenModal}
                     className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-xs font-bold text-slate-950 hover:scale-105 active:scale-95 transition-all shadow-md shadow-amber-500/20 focus-visible:ring-2 focus-visible:ring-purple-500"
-                    aria-label="Complete recovery bonus task"
+                    aria-label="Open recovery exercise details"
                   >
-                    <span>Complete Recovery Bonus</span>
+                    <span>Start Recovery</span>
                     <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                 )}
@@ -95,6 +97,38 @@ function StreakRecoveryCard({ recoveryData }) {
           </div>
         )}
 
+        {/* Modal for recovery details */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="recovery-modal-title">
+            <div className="relative w-full max-w-md bg-slate-900/95 backdrop-blur-xl rounded-2xl p-6 shadow-xl focus-visible:outline-none">
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-3 right-3 text-slate-400 hover:text-slate-200 focus-visible:ring-2 focus-visible:ring-purple-500 rounded"
+                aria-label="Close recovery dialog"
+              >
+                ×
+              </button>
+              <h2 id="recovery-modal-title" className="mb-4 text-xl font-semibold text-white">
+                {recoveryData.bonusChallenge.title}
+              </h2>
+              <p className="mb-4 text-sm text-slate-300">{recoveryData.bonusChallenge.description}</p>
+              <ul className="mb-4 list-disc list-inside text-sm text-slate-400">
+                <li>Reward: +{recoveryData.bonusChallenge.rewardXp} XP</li>
+                <li>Estimated time: {recoveryData.bonusChallenge.estimatedTime}</li>
+              </ul>
+              <button
+                onClick={() => {
+                  setIsCompleted(true);
+                  handleCloseModal();
+                }}
+                className="w-full rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 py-2 text-sm font-bold text-slate-950 hover:scale-105 focus-visible:ring-2 focus-visible:ring-purple-500"
+                aria-label="Complete recovery task"
+              >
+                Mark as Completed
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
