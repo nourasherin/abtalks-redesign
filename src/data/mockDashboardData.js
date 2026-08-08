@@ -143,14 +143,52 @@ export const mockBadges = [
 
 // Empty State Fallbacks for First Day in Challenge
 export const mockEmptyStateData = {
-  name: "Demo Student",
-  handle: "@demostudent",
-  level: 1,
-  levelTitle: "Novice Coder",
+  name: "",
+  handle: "",
+  avatar: "",
+  level: 0,
+  levelTitle: "",
   currentStreak: 0,
   totalXp: 0,
-  completedProjectsCount: 0,
   githubCommits: 0,
-  recentProjects: [],
-  badges: [],
+  completedProjectsCount: 0,
+  streakShields: 0,
 };
+export const mockDay12Challenge = {
+  title: "AI Document Summarizer Microservice",
+  description: "Build an asynchronous REST microservice that takes PDF/text document URLs, extracts contents, and generates structured summaries using the Gemini API.",
+  difficulty: "Intermediate",
+  resources: [
+    { name: "Gemini API Docs", link: "https://ai.google.dev/gemini-api" },
+    { name: "Express.js Guide", link: "https://expressjs.com/en/guide/routing.html" },
+    { name: "PDF Parsing Library", link: "https://github.com/foliojs/pdfkit" }
+  ],
+  learningObjectives: [
+    "Implement file upload handling with Multer",
+    "Call Gemini API for text generation",
+    "Design JSON response schema",
+    "Write unit tests for API endpoints"
+  ]
+};
+
+
+
+export const mockMotivationalQuote = {
+  quote: "Consistency is the bridge between goals and accomplishment.",
+  author: "J.K. Rowling"
+};
+
+export const mockDailyFocus = {
+  focus: "Refactor the file upload handler to use async/await and improve error messages."
+};
+
+export const mockAchievements = [
+  { date: "2026-09-01", title: "First Project Completed", description: "Delivered the initial onboarding microservice." },
+  { date: "2026-09-10", title: "10-Day Streak", description: "Maintained a perfect streak for ten consecutive days." },
+  { date: "2026-09-20", title: "AI Integration", description: "Successfully integrated Gemini API into a production service." }
+];
+
+export const mockCalendarEvents = [
+  { date: "2026-09-25", event: "Live coding session: Building a real‑time chat app" },
+  { date: "2026-09-28", event: "AI Hackathon – Submit your project" }
+];

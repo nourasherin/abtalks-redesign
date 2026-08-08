@@ -11,6 +11,10 @@ import StreakRecoveryCard from "../components/StreakRecoveryCard";
 import RecentProjectsList from "../components/RecentProjectsList";
 import BadgesWidget from "../components/BadgesWidget";
 import Footer from "../components/Footer";
+import DailyFocusCard from "../components/DailyFocusCard";
+import MotivationalQuoteCard from "../components/MotivationalQuoteCard";
+import CalendarCard from "../components/CalendarCard";
+import AchievementTimeline from "../components/AchievementTimeline";
 
 import {
   mockStudentProfile,
@@ -18,7 +22,11 @@ import {
   mockAICoachData,
   mockStreakRecovery,
   mockRecentProjects,
-  mockBadges,
+  mockMotivationalQuote,
+  mockDailyFocus,
+  mockAchievements,
+  mockCalendarEvents,
+
   mockEmptyStateData,
 } from "../data/mockDashboardData";
 
@@ -117,33 +125,43 @@ function Dashboard() {
 
         {/* Main Content Two-Column Grid on Desktop */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-          
-          {/* Left Column: Today's Featured Challenge & Recent Projects (8 cols on lg) */}
+            
+          {/* Left Column: Today's Featured Challenge (8 cols on lg) */}
           <div className="lg:col-span-8 space-y-6">
             
             {/* Today's Challenge Featured Card */}
             <TodaysChallengeCard challenge={mockTodaysChallenge} />
 
-            {/* AI Coach Card */}
-            <AICoachCard coachData={mockAICoachData} todaysChallenge={mockTodaysChallenge} />
-
             {/* Recent Completed Projects List */}
             <RecentProjectsList projects={currentRecentProjects} />
 
-          </div>
-
-          {/* Right Column: Widgets (Mood Check, Streak Protection, Badges) (4 cols on lg) */}
-          <div className="lg:col-span-4 space-y-6">
-            
             {/* Mood Check Card */}
             <MoodCheckCard />
 
             {/* Streak Recovery & Shield Card */}
             <StreakRecoveryCard recoveryData={mockStreakRecovery} />
+          </div>
 
-            {/* Badges Widget */}
-            <BadgesWidget badges={currentBadges} />
+          {/* Right Column: Ordered Widgets (4 cols on lg) */}
+          <div className="lg:col-span-4 space-y-6">
+            
+            {/* Top Row: AI Coach + Badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <AICoachCard coachData={mockAICoachData} todaysChallenge={mockTodaysChallenge} />
+              <BadgesWidget badges={currentBadges} />
+            </div>
 
+            {/* Second Row: Daily Focus + Motivational Quote */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <DailyFocusCard focus={mockDailyFocus} />
+              <MotivationalQuoteCard quote={mockMotivationalQuote} />
+            </div>
+
+            {/* Achievement Timeline Full Width */}
+            <AchievementTimeline achievements={mockAchievements} />
+
+            {/* Calendar Full Width */}
+            <CalendarCard events={mockCalendarEvents} />
           </div>
 
         </div>
