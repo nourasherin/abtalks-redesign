@@ -26,7 +26,8 @@ function StreakRecoveryCard({ recoveryData }) {
               setIsSimulatedMissed(!isSimulatedMissed);
               setIsCompleted(false);
             }}
-            className="rounded-lg bg-slate-800/90 px-2.5 py-1 text-[10px] font-bold text-amber-300 hover:bg-slate-800 border border-amber-500/30"
+            className="rounded-lg bg-slate-800/90 px-2.5 py-1 text-[10px] font-bold text-amber-300 hover:bg-slate-800 border border-amber-500/30 focus-visible:ring-2 focus-visible:ring-purple-500"
+            aria-label="Toggle simulation of missed day"
           >
             {isSimulatedMissed ? "Simulate: Active Streak" : "Simulate: Missed Day"}
           </button>
@@ -60,13 +61,14 @@ function StreakRecoveryCard({ recoveryData }) {
                 <span className="text-[11px] font-semibold text-slate-400">Est. Time: {recoveryData.bonusChallenge.estimatedTime}</span>
                 
                 {isCompleted ? (
-                  <span className="flex items-center gap-1 text-xs font-bold text-emerald-400 bg-emerald-500/20 px-3 py-1.5 rounded-xl border border-emerald-500/40">
+                  <span role="alert" className="flex items-center gap-1 text-xs font-bold text-emerald-400 bg-emerald-500/20 px-3 py-1.5 rounded-xl border border-emerald-500/40">
                     <CheckCircle2 className="h-4 w-4" /> Streak Restored!
                   </span>
                 ) : (
                   <button
                     onClick={() => setIsCompleted(true)}
-                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-xs font-bold text-slate-950 hover:scale-105 active:scale-95 transition-all shadow-md shadow-amber-500/20"
+                    className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 px-4 py-2 text-xs font-bold text-slate-950 hover:scale-105 active:scale-95 transition-all shadow-md shadow-amber-500/20 focus-visible:ring-2 focus-visible:ring-purple-500"
+                    aria-label="Complete recovery bonus task"
                   >
                     <span>Complete Recovery Bonus</span>
                     <ArrowRight className="h-3.5 w-3.5" />

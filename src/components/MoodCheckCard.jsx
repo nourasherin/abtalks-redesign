@@ -36,7 +36,9 @@ function MoodCheckCard() {
             <button
               key={m.id}
               onClick={() => setSelectedMood(m.id)}
-              className={`flex flex-col items-center justify-center gap-1 rounded-2xl border p-2.5 transition-all duration-300 ${
+              aria-label={`Select mood ${m.label}`}
+              aria-pressed={isSelected}
+              className={`flex flex-col items-center justify-center gap-1 rounded-2xl border p-2.5 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-purple-500 ${
                 isSelected
                   ? "border-purple-500 bg-purple-600/20 text-white shadow-lg shadow-purple-600/20 scale-[1.03]"
                   : "border-slate-800 bg-slate-950/60 text-slate-400 hover:bg-slate-800 hover:text-white"
