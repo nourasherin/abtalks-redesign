@@ -192,3 +192,42 @@ export const mockCalendarEvents = [
   { date: "2026-09-25", event: "Live coding session: Building a real‑time chat app" },
   { date: "2026-09-28", event: "AI Hackathon – Submit your project" }
 ];
+
+// Leaderboard mock data
+export const mockLeaderboard = [
+  {
+    name: "Alex Rivera",
+    avatar: "https://i.pravatar.cc/150?img=1",
+    rank: 1,
+    xp: 5400,
+    streak: 12,
+  },
+  {
+    name: "Maya Chen",
+    avatar: "https://i.pravatar.cc/150?img=2",
+    rank: 2,
+    xp: 4980,
+    streak: 11,
+  },
+  {
+    name: "Liam Patel",
+    avatar: "https://i.pravatar.cc/150?img=3",
+    rank: 3,
+    xp: 4750,
+    streak: 10,
+  },
+];
+
+// Testimonials mock data
+export const mockTestimonials = [
+  {
+    name: "Sofia Martinez",
+    avatar: "https://i.pravatar.cc/150?img=4",
+    quote: "ABTalks turned my ideas into real projects. The AI Coach kept me motivated every day!",
+  },
+  {
+    name: "Noah Kim",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    quote: "Learning prompt engineering was fun and practical. I can now design better AI prompts.",
+  },
+];
