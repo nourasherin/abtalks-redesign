@@ -45,6 +45,28 @@ The following AI prompts were used throughout the development of the ABTalks Red
 - Added `role="alert"` to dynamic success messages (e.g., streak restored, proof submitted).
 
 ## 9. Documentation
+
 - Generated this `PROMPTS.md` to capture all prompts used during the implementation.
+
+## 10. Bug Fixing and Interaction Testing
+
+- Investigated the Streak Recovery "Start Recovery" interaction when the modal did not open.
+- Used AI-assisted debugging to inspect StreakRecoveryCard.jsx and identify the incorrect click handler.
+- Fixed the modal trigger and subsequently addressed modal clipping caused by the parent stacking context.
+- Updated the recovery flow so the modal opens, displays the exercise, allows completion, and restores the streak.
+
+## 11. Responsive Layout and Scroll Testing
+
+- Tested the application at a 390px viewport.
+- Investigated excessive vertical page height and unexpected scrolling behavior.
+- Reviewed page wrappers and navigation/hash links to identify possible causes.
+- Applied layout and navigation fixes while preserving the existing design.
+
+## 12. Build and Deployment
+
+- Used AI assistance to troubleshoot Vite build and Vercel deployment issues.
+- Verified successful production builds.
+- Deployed the final application to Vercel.
+- Verified the main routes and interactive features after deployment.
 
 *All prompts are derived directly from the development process and correspond to the current codebase. No undocumented features were introduced.*
